@@ -32,26 +32,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Run NestJS unit test
+      # Step 4: Run unit test
       - name: Run unit test
         run: npm run test
 
-      # Step 5: Upload unit test results
-      - name: Upload Unit Test Results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: unit-test-results
-          path: coverage
-
-      # Step 4: Run NestJS integration test
+      # Step 5: Run integration test
       - name: Run integration test
         run: npm run test:e2e
-
-      # Step 5: Upload integration test results
-      - name: Upload Integration Test Results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: integration-test-results
-          path: coverage
