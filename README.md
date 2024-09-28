@@ -1,6 +1,6 @@
 # Niuco Backend Challenge
 
-O desafio foi desenvolvido utilizando o framework NestJS.
+O desafio foi desenvolvido utilizando o framework NestJS e a metodologia TDD (Test Driven Development).
 
 ## Instalação
 
