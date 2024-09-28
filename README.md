@@ -48,3 +48,5 @@ O framework NestJS foi escolhido por alguns motivos, dentre eles:
 - Permite, de forma simples, a criação de testes unitários e de integração.
 - É um dos frameworks mais utilizados na stack de NodeJS para backend.
 - Tem alto poder de escalabilidade através da utilização de módulos, os quais permitem que a aplicação seja dividida em partes menores para facilitar sua manutenção e entendimento.
+
+> *Vale ressaltar que para a resolução deste desafio em específico foi utilizado o módulo principal da aplicação `App`, mas em um projeto escalável, o ideal seria desenvolver os endpoints de usuário no próprio módulo de usuário.
