@@ -12,40 +12,40 @@ describe('AppController (e2e)', () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     })
-    .overrideProvider(HttpService)
-    .useValue({
-      get: jest.fn().mockImplementation(() =>
-        of({
-          data: [
-            {
-              id: '0373e634-2d03-457e-a24d-2b0c8c3b7c37',
-              name: 'John Connor',
-              email: 'john.connor@niuco.com.br',
-              status: 'enabled',
-              role: 'admin',
-              last_activity: 1649179152,
-            },
-            {
-              id: '5fb75748-efa6-4d48-9930-14289d87466f',
-              name: 'Kyle Reese',
-              email: 'kyle.reese@gmail.com',
-              status: 'disabled',
-              role: 'editor',
-              last_activity: 1649073600,
-            },
-            {
-              id: '4c3dfa4c-3cee-4acb-b032-c09afad54ab4',
-              name: 'Bob Esponja',
-              email: 'bob.esponja@niuco.com.br',
-              status: 'enabled',
-              role: 'viewer',
-              last_activity: 1649098800,
-            },
-          ],
-        })
-      ),
-    })
-    .compile();
+      .overrideProvider(HttpService)
+      .useValue({
+        get: jest.fn().mockImplementation(() =>
+          of({
+            data: [
+              {
+                id: '0373e634-2d03-457e-a24d-2b0c8c3b7c37',
+                name: 'John Connor',
+                email: 'john.connor@niuco.com.br',
+                status: 'enabled',
+                role: 'admin',
+                last_activity: 1649179152,
+              },
+              {
+                id: '5fb75748-efa6-4d48-9930-14289d87466f',
+                name: 'Kyle Reese',
+                email: 'kyle.reese@gmail.com',
+                status: 'disabled',
+                role: 'editor',
+                last_activity: 1649073600,
+              },
+              {
+                id: '4c3dfa4c-3cee-4acb-b032-c09afad54ab4',
+                name: 'Bob Esponja',
+                email: 'bob.esponja@niuco.com.br',
+                status: 'enabled',
+                role: 'viewer',
+                last_activity: 1649098800,
+              },
+            ],
+          }),
+        ),
+      })
+      .compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();

@@ -7,13 +7,15 @@ import * as moment from 'moment';
 @Injectable()
 export class AppService {
   constructor(private readonly httpService: HttpService) {}
-  
+
   async getUsers(): Promise<User[]> {
     try {
-      const { data } = await firstValueFrom(this.httpService.get(`${process.env.EXTERNAL_API_URL}/users`));
+      const { data } = await firstValueFrom(
+        this.httpService.get(`${process.env.EXTERNAL_API_URL}/users`),
+      );
 
       return this.transformUsers(data);
-    } catch(error) {
+    } catch (error) {
       console.error(error);
       return [];
     }
@@ -27,7 +29,7 @@ export class AppService {
         email: this.obfuscateEmail(user.email),
         lastActivity: this.unixToISOString(user.last_activity),
         isPayer: this.isPayer(user),
-        isActive: user.status === 'enabled'
+        isActive: user.status === 'enabled',
       };
     });
   }
@@ -49,7 +51,7 @@ export class AppService {
 
     const firstLetters = user.slice(0, leaveCharacters);
     const lastLetters = user.slice(-leaveCharacters);
-    const obfuscation = "*".repeat(user.length - leaveCharacters * 2);
+    const obfuscation = '*'.repeat(user.length - leaveCharacters * 2);
 
     return `${firstLetters}${obfuscation}${lastLetters}@${domain}`;
   }
