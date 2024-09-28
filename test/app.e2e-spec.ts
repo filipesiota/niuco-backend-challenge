@@ -53,32 +53,35 @@ describe('AppController (e2e)', () => {
 
   describe('/users (GET)', () => {
     it('should return a manipulated array of users based on an external API call', async () => {
-      const expectedResponse = [
-        {
-          id: '0373e634-2d03-457e-a24d-2b0c8c3b7c37',
-          name: 'John Connor',
-          email: 'john.connor@niuco.com.br',
-          lastActivity: '2022-04-05T17:19:12.000Z',
-          isPayer: true,
-          isActive: true,
-        },
-        {
-          id: '5fb75748-efa6-4d48-9930-14289d87466f',
-          name: 'Kyle Reese',
-          email: 'ky******se@gmail.com',
-          lastActivity: '2022-04-04T12:00:00.000Z',
-          isPayer: false,
-          isActive: false,
-        },
-        {
-          id: '4c3dfa4c-3cee-4acb-b032-c09afad54ab4',
-          name: 'Bob Esponja',
-          email: 'bob.esponja@niuco.com.br',
-          lastActivity: '2022-04-04T19:00:00.000Z',
-          isPayer: false,
-          isActive: true,
-        },
-      ];
+      const expectedResponse = {
+        success: true,
+        data: [
+          {
+            id: '0373e634-2d03-457e-a24d-2b0c8c3b7c37',
+            name: 'John Connor',
+            email: 'john.connor@niuco.com.br',
+            lastActivity: '2022-04-05T17:19:12.000Z',
+            isPayer: true,
+            isActive: true,
+          },
+          {
+            id: '5fb75748-efa6-4d48-9930-14289d87466f',
+            name: 'Kyle Reese',
+            email: 'ky******se@gmail.com',
+            lastActivity: '2022-04-04T12:00:00.000Z',
+            isPayer: false,
+            isActive: false,
+          },
+          {
+            id: '4c3dfa4c-3cee-4acb-b032-c09afad54ab4',
+            name: 'Bob Esponja',
+            email: 'bob.esponja@niuco.com.br',
+            lastActivity: '2022-04-04T19:00:00.000Z',
+            isPayer: false,
+            isActive: true,
+          },
+        ]
+      };
 
       return request(app.getHttpServer())
         .get('/users')

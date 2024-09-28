@@ -15,3 +15,14 @@ export interface UserExternal {
   role: 'admin' | 'editor' | 'viewer' | 'system';
   last_activity: number;
 }
+
+export interface APIResponse<T> {
+  success: boolean;
+  error?: APIError;
+  data: T
+}
+
+export interface APIError {
+  code: string;
+  message: string;
+}

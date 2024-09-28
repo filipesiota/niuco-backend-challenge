@@ -9,16 +9,11 @@ export class AppService {
   constructor(private readonly httpService: HttpService) {}
 
   async getUsers(): Promise<User[]> {
-    try {
-      const { data } = await firstValueFrom(
-        this.httpService.get(`${process.env.EXTERNAL_API_URL}/users`),
-      );
+    const { data } = await firstValueFrom(
+      this.httpService.get(`${process.env.API_MOCK_URL}/users`),
+    );
 
-      return this.transformUsers(data);
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
+    return this.transformUsers(data);
   }
 
   private transformUsers(users: UserExternal[]): User[] {

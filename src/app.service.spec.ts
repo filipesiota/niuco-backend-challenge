@@ -1,15 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HttpService } from '@nestjs/axios';
 import { of } from 'rxjs';
 
-describe('AppController', () => {
-  let appController: AppController;
+describe('AppService', () => {
+  let appService: AppService;
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
+    const module: TestingModule = await Test.createTestingModule({
       providers: [
         AppService,
         {
@@ -50,12 +48,12 @@ describe('AppController', () => {
       ],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    appService = module.get<AppService>(AppService);
   });
 
   describe('getUsers', () => {
     it('should return a manipulated array of users based on an external API call', async () => {
-      const extectedResponse = [
+      const expectedResponse = [
         {
           id: '0373e634-2d03-457e-a24d-2b0c8c3b7c37',
           name: 'John Connor',
@@ -82,7 +80,8 @@ describe('AppController', () => {
         },
       ];
 
-      expect(await appController.getUsers()).toStrictEqual(extectedResponse);
+      const result = await appService.getUsers();
+      expect(result).toStrictEqual(expectedResponse);
     });
   });
 });
