@@ -40,3 +40,11 @@ npm run test:e2e
 ## CI/CD
 
 A pipeline de CI/CD foi desenvolvida através do GitHub actions e sua configuração está presente em [.github/workflows](https://github.com/filipesiota/niuco-backend-challenge/tree/main/.github/workflows)
+
+## Decisões técnicas, manutenibilidade e escalabilidade da aplicação
+
+O framework NestJS foi escolhido por alguns motivos, dentre eles:
+
+- Permite, de forma simples, a criação de testes unitários e de integração.
+- É um dos frameworks mais utilizados na stack de NodeJS para backend.
+- Tem alto poder de escalabilidade através da utilização de módulos, os quais permitem que a aplicação seja dividida em partes menores para facilitar sua manutenção e entendimento.
