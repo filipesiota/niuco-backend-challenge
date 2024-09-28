@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { User, UserExternal } from './interfaces/app.interface';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
-import * as moment from 'moment';
 
 @Injectable()
 export class AppService {
@@ -22,7 +21,7 @@ export class AppService {
         id: user.id,
         name: user.name,
         email: this.obfuscateEmail(user.email),
-        lastActivity: this.unixToISOString(user.last_activity),
+        lastActivity: new Date(user.last_activity * 1000).toISOString(),
         isPayer: this.isPayer(user),
         isActive: user.status === 'enabled',
       };
@@ -49,10 +48,6 @@ export class AppService {
     const obfuscation = '*'.repeat(user.length - leaveCharacters * 2);
 
     return `${firstLetters}${obfuscation}${lastLetters}@${domain}`;
-  }
-
-  private unixToISOString(unix: number): string {
-    return moment.unix(unix).toISOString();
   }
 
   private isPayer({ status, role }: UserExternal): boolean {
